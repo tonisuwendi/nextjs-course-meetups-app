@@ -1,18 +1,20 @@
 import { Fragment } from "react";
-import Head from 'next/head'
+import Head from "next/head";
 
 import { MongoClient } from "mongodb";
 
 import MeetupList from "../components/meetups/MeetupList";
 
 const HomePage = ({ meetups }) => {
-  return <Fragment>
-    <Head>
-      <title>React Meetups!</title>
-      <meta name="description" content="Ini adalah website react meetups." />
-    </Head>
-    <MeetupList meetups={meetups} />
-  </Fragment>;
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups!</title>
+        <meta name="description" content="Ini adalah website react meetups." />
+      </Head>
+      <MeetupList meetups={meetups} />
+    </Fragment>
+  );
 };
 
 export async function getStaticProps() {
@@ -39,6 +41,7 @@ export async function getStaticProps() {
         };
       }),
     },
+    revalidate: 1,
   };
 }
 
